@@ -99,6 +99,31 @@
             overflow: hidden;
         }
 
+        .hero-slideshow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .hero-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-slide.active {
+            opacity: 1;
+        }
+
         .hero::before {
             content: '';
             position: absolute;
@@ -108,13 +133,14 @@
             bottom: 0;
             background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" opacity="0.03"><polygon fill="white" points="0,1000 1000,0 1000,1000"/></svg>');
             background-size: cover;
+            z-index: 2;
         }
 
         .hero-content {
             max-width: 800px;
             padding: 0 2rem;
             position: relative;
-            z-index: 2;
+            z-index: 3;
         }
 
         .hero h1 {
@@ -188,7 +214,10 @@
             margin-right: auto;
         }
 
-        .services-grid {
+        .services-grid,
+        .rooms-grid,
+        .dining-grid,
+        .pool-grid {
             max-width: 1400px;
             margin: 0 auto;
             display: grid;
@@ -196,7 +225,10 @@
             gap: 3rem;
         }
 
-        .service-card {
+        .service-card,
+        .room-card,
+        .dining-card,
+        .pool-card {
             background: #fff;
             border-radius: 20px;
             overflow: hidden;
@@ -206,7 +238,10 @@
             position: relative;
         }
 
-        .service-card::before {
+        .service-card::before,
+        .room-card::before,
+        .dining-card::before,
+        .pool-card::before {
             content: '';
             position: absolute;
             top: 0;
@@ -218,52 +253,79 @@
             transition: transform 0.4s ease;
         }
 
-        .service-card:hover {
+        .service-card:hover,
+        .room-card:hover,
+        .dining-card:hover,
+        .pool-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 25px 60px rgba(44, 24, 16, 0.15);
         }
 
-        .service-card:hover::before {
+        .service-card:hover::before,
+        .room-card:hover::before,
+        .dining-card:hover::before,
+        .pool-card:hover::before {
             transform: scaleX(1);
         }
 
-        .service-image {
+        .service-image,
+        .room-image,
+        .dining-image,
+        .pool-image {
             width: 100%;
             height: 250px;
             overflow: hidden;
             position: relative;
         }
 
-        .service-image img {
+        .service-image img,
+        .room-image img,
+        .dining-image img,
+        .pool-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: transform 0.6s ease;
         }
 
-        .service-card:hover .service-image img {
+        .service-card:hover .service-image img,
+        .room-card:hover .room-image img,
+        .dining-card:hover .dining-image img,
+        .pool-card:hover .pool-image img {
             transform: scale(1.1);
         }
 
-        .service-info {
+        .service-info,
+        .room-info,
+        .dining-info,
+        .pool-info {
             padding: 2rem;
         }
 
-        .service-header {
+        .service-header,
+        .room-header,
+        .dining-header,
+        .pool-header {
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
             margin-bottom: 1rem;
         }
 
-        .service-header h3 {
+        .service-header h3,
+        .room-header h3,
+        .dining-header h3,
+        .pool-header h3 {
             font-size: 1.5rem;
             font-weight: 600;
             color: #2c1810;
             line-height: 1.3;
         }
 
-        .price {
+        .price,
+        .room-price,
+        .dining-price,
+        .pool-price {
             color: #d4a574;
             font-weight: 700;
             font-size: 1.3rem;
@@ -274,120 +336,33 @@
             text-align: center;
         }
 
-        .service-info p {
+        .service-info p,
+        .room-info p,
+        .dining-info p,
+        .pool-info p {
             color: #666;
             margin-bottom: 1.5rem;
             line-height: 1.6;
             font-size: 1rem;
         }
 
-        /* Rooms Grid */
-        .rooms-grid {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 3rem;
-        }
-
-        .room-card {
-            background: #fff;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 10px 40px rgba(44, 24, 16, 0.08);
-            transition: all 0.4s ease;
-            border: 1px solid #f0f0f0;
-            position: relative;
-        }
-
-        .room-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, #d4a574, #2c1810);
-            transform: scaleX(0);
-            transition: transform 0.4s ease;
-        }
-
-        .room-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 25px 60px rgba(44, 24, 16, 0.15);
-        }
-
-        .room-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .room-image {
-            width: 100%;
-            height: 250px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .room-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.6s ease;
-        }
-
-        .room-card:hover .room-image img {
-            transform: scale(1.1);
-        }
-
-        .room-info {
-            padding: 2rem;
-        }
-
-        .room-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 1.5rem;
-        }
-
-        .room-header h3 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: #2c1810;
-            line-height: 1.3;
-        }
-
-        .room-price {
-            color: #d4a574;
-            font-weight: 700;
-            font-size: 1.3rem;
-            background: #f8f5f2;
-            padding: 0.5rem 1rem;
-            border-radius: 25px;
-            min-width: 120px;
-            text-align: center;
-        }
-
-        .room-features {
+        .room-features,
+        .dining-features,
+        .pool-features {
             display: flex;
             gap: 0.8rem;
             margin-bottom: 1.5rem;
             flex-wrap: wrap;
         }
 
-        .feature {
+        .feature,
+        .highlight {
             background: #f8f5f2;
             padding: 0.6rem 1.2rem;
             border-radius: 25px;
             font-size: 0.9rem;
             color: #2c1810;
             font-weight: 500;
-        }
-
-        .room-info p {
-            color: #666;
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
         }
 
         /* Footer */
@@ -610,7 +585,7 @@
             color: #2c1810;
         }
 
-        .form-group input, .form-group select {
+        .form-group input, .form-group select, .form-group textarea {
             width: 100%;
             padding: 1rem 1.5rem;
             border: 2px solid #f0f0f0;
@@ -618,9 +593,10 @@
             font-size: 1rem;
             transition: all 0.3s ease;
             background: #fff;
+            font-family: inherit;
         }
 
-        .form-group input:focus, .form-group select:focus {
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
             outline: none;
             border-color: #d4a574;
             box-shadow: 0 0 0 3px rgba(212, 165, 116, 0.1);
@@ -647,13 +623,132 @@
             box-shadow: 0 10px 30px rgba(44, 24, 16, 0.3);
         }
 
+        /* Contact Page Styles */
+        .contact-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-info {
+            display: block;
+            text-align: left;
+            margin: 0;
+        }
+
+        .contact-details {
+            margin-bottom: 3rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-icon {
+            font-size: 1.8rem;
+            color: #d4a574;
+        }
+
+        .contact-text h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #2c1810;
+        }
+
+        .contact-text p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .business-hours {
+            background: #f8f5f2;
+            padding: 2rem;
+            border-radius: 20px;
+        }
+
+        .business-hours h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: #2c1810;
+            text-align: center;
+        }
+
+        .hours-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(44, 24, 16, 0.1);
+        }
+
+        .hours-item:last-child {
+            border-bottom: none;
+        }
+
+        .contact-form {
+            background: #fff;
+            padding: 2.5rem;
+            border-radius: 25px;
+            box-shadow: 0 10px 40px rgba(44, 24, 16, 0.08);
+            border: 1px solid #f0f0f0;
+        }
+
+        .contact-form h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: #2c1810;
+            text-align: center;
+        }
+
+        /* About Section */
+        .about-section {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-image {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(44, 24, 16, 0.15);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .about-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: #2c1810;
+            line-height: 1.2;
+        }
+
+        .about-content p {
+            color: #666;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
         /* Responsive Design */
         @media (max-width: 1024px) {
             .hero h1 {
                 font-size: 3.5rem;
             }
             
-            .details-content {
+            .details-content,
+            .contact-container,
+            .about-section {
                 grid-template-columns: 1fr;
                 gap: 3rem;
             }
@@ -693,7 +788,9 @@
             }
 
             .services-grid,
-            .rooms-grid {
+            .rooms-grid,
+            .dining-grid,
+            .pool-grid {
                 grid-template-columns: 1fr;
                 gap: 2rem;
             }
@@ -745,13 +842,17 @@
             }
             
             .service-header,
-            .room-header {
+            .room-header,
+            .dining-header,
+            .pool-header {
                 flex-direction: column;
                 gap: 1rem;
             }
             
             .price,
-            .room-price {
+            .room-price,
+            .dining-price,
+            .pool-price {
                 align-self: flex-start;
             }
             
@@ -759,7 +860,8 @@
                 padding: 2rem;
             }
             
-            .booking-form {
+            .booking-form,
+            .contact-form {
                 padding: 2rem;
             }
         }
@@ -802,7 +904,7 @@
                 <a href="#rooms">Rooms</a>
                 <a href="#dining">Dining</a>
                 <a href="#pool">Pool</a>
-                <a href="#contact-page">Contact</a>
+                <a href="#contact">Contact</a>
             </nav>
         </div>
     </header>
@@ -811,6 +913,11 @@
     <main id="home-page">
         <!-- Hero Section -->
         <section class="hero" id="home">
+            <div class="hero-slideshow">
+                <div class="hero-slide active" style="background-image: url('https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')"></div>
+                <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1611892440504-42a792e24d32?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')"></div>
+                <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1584622650111-993a426fbf0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')"></div>
+            </div>
             <div class="hero-content fade-in">
                 <h1>Where Luxury Meets Serenity</h1>
                 <p>Experience unparalleled elegance in the heart of paradise. Discover a sanctuary designed for those who appreciate the finer things in life.</p>
@@ -821,13 +928,28 @@
             </div>
         </section>
 
+        <!-- About Section -->
+        <section class="section">
+            <div class="about-section stagger">
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Oasis Hotel Exterior">
+                </div>
+                <div class="about-content">
+                    <h2>Welcome to Oasis Hotel</h2>
+                    <p>Nestled in the heart of paradise, Oasis Hotel offers a sanctuary of luxury and tranquility. Our commitment to exceptional service and attention to detail ensures every guest experiences the perfect blend of comfort and elegance.</p>
+                    <p>With breathtaking views, world-class amenities, and a dedication to creating unforgettable memories, Oasis Hotel is more than just a place to stay—it's a destination in itself.</p>
+                    <a href="#rooms" class="btn">Discover Our Rooms</a>
+                </div>
+            </div>
+        </section>
+
         <!-- Services Section -->
         <section class="section">
             <h2 class="section-title">Our Exclusive Services</h2>
             <p class="section-subtitle">Indulge in world-class amenities and services crafted for your ultimate comfort and satisfaction</p>
             
             <div class="services-grid stagger">
-                <a href="room-deluxe.html" class="service-card">
+                <a href="#rooms" class="service-card">
                     <div class="service-image">
                         <img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Luxury Accommodations">
                     </div>
@@ -840,20 +962,20 @@
                     </div>
                 </a>
 
-                <a href="dining.html" class="service-card">
+                <a href="#dining" class="service-card">
                     <div class="service-image">
                         <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Fine Dining Experience">
-              ice-header">
-      </div>
+                    </div>
                     <div class="service-info">
-                        <div class="serv                            <h3>Fine Dining Experience</h3>
+                        <div class="service-header">
+                            <h3>Fine Dining Experience</h3>
                             <span class="price">From $25</span>
                         </div>
                         <p>Exquisite culinary journeys crafted by award-winning chefs, featuring locally sourced ingredients and international flavors.</p>
                     </div>
                 </a>
 
-                <a href="pool.html" class="service-card">
+                <a href="#pool" class="service-card">
                     <div class="service-image">
                         <img src="https://images.unsplash.com/photo-1575429198097-0414ec08e8cd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Infinity Pool">
                     </div>
@@ -872,9 +994,15 @@
     <!-- Rooms Page -->
     <main id="rooms-page" style="display: none;">
         <section class="hero" id="rooms">
+            <div class="hero-slideshow">
+                <div class="hero-slide active" style="background-image: url('https://images.unsplash.com/photo-1631049307264-da0ec9d70304?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')"></div>
+                <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1618773928121-c32242e63f39?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')"></div>
+                <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')"></div>
+            </div>
             <div class="hero-content fade-in">
                 <h1>Luxury Accommodations</h1>
                 <p>Discover our carefully curated collection of rooms and suites, each designed to provide an unforgettable experience of comfort and elegance.</p>
+                <a href="#contact" class="btn">Book Your Stay</a>
             </div>
         </section>
 
@@ -883,7 +1011,7 @@
             <p class="section-subtitle">Choose from our exclusive selection of accommodations, each offering unique features and premium amenities</p>
             
             <div class="rooms-grid stagger">
-                <a href="room-deluxe.html" class="room-card">
+                <div class="room-card">
                     <div class="room-image">
                         <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Deluxe Room">
                     </div>
@@ -899,9 +1027,9 @@
                         </div>
                         <p>Spacious and elegantly appointed room with premium amenities, private balcony, and stunning ocean views for the perfect getaway.</p>
                     </div>
-                </a>
+                </div>
 
-                <a href="room-executive.html" class="room-card">
+                <div class="room-card">
                     <div class="room-image">
                         <img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Executive Suite">
                     </div>
@@ -917,9 +1045,9 @@
                         </div>
                         <p>Luxurious suite featuring separate living area, premium services, private jacuzzi, and exclusive access to executive lounge.</p>
                     </div>
-                </a>
+                </div>
 
-                <a href="room-standard.html" class="room-card">
+                <div class="room-card">
                     <div class="room-image">
                         <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Standard Room">
                     </div>
@@ -935,9 +1063,9 @@
                         </div>
                         <p>Comfortable and elegantly designed room with all essential amenities, perfect for both business and leisure travelers.</p>
                     </div>
-                </a>
+                </div>
 
-                <a href="room-presidential.html" class="room-card">
+                <div class="room-card">
                     <div class="room-image">
                         <img src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Presidential Suite">
                     </div>
@@ -953,7 +1081,7 @@
                         </div>
                         <p>The ultimate luxury experience with two bedrooms, private pool, dedicated butler service, and panoramic city views.</p>
                     </div>
-                </a>
+                </div>
             </div>
         </section>
     </main>
@@ -961,9 +1089,15 @@
     <!-- Dining Page -->
     <main id="dining-page" style="display: none;">
         <section class="hero" id="dining">
+            <div class="hero-slideshow">
+                <div class="hero-slide active" style="background-image: url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')"></div>
+                <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1559329007-40df8a9345d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')"></div>
+                <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1572119865084-43d5b5d67b34?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')"></div>
+            </div>
             <div class="hero-content fade-in">
                 <h1>Culinary Excellence</h1>
                 <p>Indulge in exquisite dining experiences crafted by our award-winning chefs, featuring locally sourced ingredients and international flavors.</p>
+                <a href="#contact" class="btn">Make a Reservation</a>
             </div>
         </section>
 
@@ -979,10 +1113,10 @@
                     <div class="dining-info">
                         <div class="dining-header">
                             <h3>Signature Restaurant</h3>
-                            <span class="price">From $45</span>
+                            <span class="dining-price">From $45</span>
                         </div>
                         <p>An elegant fine dining experience featuring contemporary cuisine with international influences and an extensive wine selection.</p>
-                        <div class="menu-highlights">
+                        <div class="dining-features">
                             <span class="highlight">Seasonal Tasting Menu</span>
                             <span class="highlight">Wine Pairings</span>
                             <span class="highlight">Chef's Table</span>
@@ -997,10 +1131,10 @@
                     <div class="dining-info">
                         <div class="dining-header">
                             <h3>Poolside Grill</h3>
-                            <span class="price">From $18</span>
+                            <span class="dining-price">From $18</span>
                         </div>
                         <p>Casual dining by the infinity pool with fresh grilled specialties, light bites, and refreshing cocktails in a relaxed atmosphere.</p>
-                        <div class="menu-highlights">
+                        <div class="dining-features">
                             <span class="highlight">Fresh Seafood</span>
                             <span class="highlight">Artisan Burgers</span>
                             <span class="highlight">Tropical Cocktails</span>
@@ -1015,10 +1149,10 @@
                     <div class="dining-info">
                         <div class="dining-header">
                             <h3>Sunset Lounge</h3>
-                            <span class="price">From $12</span>
+                            <span class="dining-price">From $12</span>
                         </div>
                         <p>Sophisticated bar with panoramic views, featuring handcrafted cocktails, premium spirits, and live music in the evenings.</p>
-                        <div class="menu-highlights">
+                        <div class="dining-features">
                             <span class="highlight">Craft Cocktails</span>
                             <span class="highlight">Live Music</span>
                             <span class="highlight">Tapas Menu</span>
@@ -1032,9 +1166,15 @@
     <!-- Pool Page -->
     <main id="pool-page" style="display: none;">
         <section class="hero" id="pool">
+            <div class="hero-slideshow">
+                <div class="hero-slide active" style="background-image: url('https://images.unsplash.com/photo-1575429198097-0414ec08e8cd?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')"></div>
+                <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')"></div>
+                <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1544161515-4ab6ce6db874?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')"></div>
+            </div>
             <div class="hero-content fade-in">
                 <h1>Infinity Pool & Wellness</h1>
                 <p>Relax and rejuvenate in our stunning infinity pool with panoramic views and premium wellness facilities.</p>
+                <a href="#contact" class="btn">Book Spa Services</a>
             </div>
         </section>
 
@@ -1042,56 +1182,83 @@
             <h2 class="section-title">Pool & Wellness Facilities</h2>
             <p class="section-subtitle">Experience ultimate relaxation with our premium pool and wellness amenities</p>
             
-            <div class="pool-features stagger">
-                <div class="pool-feature">
-                    <div class="pool-feature-icon">🏊</div>
-                    <h3>Infinity Pool</h3>
-                    <p>Our stunning 25-meter infinity pool offers breathtaking panoramic views of the ocean and surrounding landscape.</p>
+            <div class="pool-grid stagger">
+                <div class="pool-card">
+                    <div class="pool-image">
+                        <img src="https://images.unsplash.com/photo-1575429198097-0414ec08e8cd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Infinity Pool">
+                    </div>
+                    <div class="pool-info">
+                        <div class="pool-header">
+                            <h3>Infinity Pool</h3>
+                            <span class="pool-price">Complimentary</span>
+                        </div>
+                        <p>Our stunning 25-meter infinity pool offers breathtaking panoramic views of the ocean and surrounding landscape.</p>
+                        <div class="pool-features">
+                            <span class="feature">Heated Pool</span>
+                            <span class="feature">Poolside Service</span>
+                            <span class="feature">Sunset Views</span>
+                        </div>
+                    </div>
                 </div>
-                
-                <div class="pool-feature">
-                    <div class="pool-feature-icon">🧖</div>
-                    <h3>Poolside Cabanas</h3>
-                    <p>Private cabanas with premium loungers, dedicated service, and refreshments for the ultimate relaxation experience.</p>
-                </div>
-                
-                <div class="pool-feature">
-                    <div class="pool-feature-icon">💆</div>
-                    <h3>Spa Services</h3>
-                    <p>Indulge in our premium spa treatments including massages, facials, and wellness therapies by expert therapists.</p>
-                </div>
-                
-                <div class="pool-feature">
-                    <div class="pool-feature-icon">🏋️</div>
-                    <h3>Fitness Center</h3>
-                    <p>State-of-the-art fitness facility with modern equipment, personal training, and group fitness classes.</p>
-                </div>
-            </div>
 
-            <h2 class="section-title" style="margin-top: 4rem;">Pool Gallery</h2>
-            <div class="pool-gallery stagger">
-                <div class="pool-gallery-item">
-                    <img src="https://images.unsplash.com/photo-1575429198097-0414ec08e8cd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Infinity Pool">
+                <div class="pool-card">
+                    <div class="pool-image">
+                        <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Poolside Cabanas">
+                    </div>
+                    <div class="pool-info">
+                        <div class="pool-header">
+                            <h3>Poolside Cabanas</h3>
+                            <span class="pool-price">From $75/day</span>
+                        </div>
+                        <p>Private cabanas with premium loungers, dedicated service, and refreshments for the ultimate relaxation experience.</p>
+                        <div class="pool-features">
+                            <span class="feature">Private Service</span>
+                            <span class="feature">Premium Amenities</span>
+                            <span class="feature">Complimentary Refreshments</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="pool-gallery-item">
-                    <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Poolside Cabanas">
-                </div>
-                <div class="pool-gallery-item">
-                    <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Pool at Sunset">
+
+                <div class="pool-card">
+                    <div class="pool-image">
+                        <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Wellness Spa">
+                    </div>
+                    <div class="pool-info">
+                        <div class="pool-header">
+                            <h3>Wellness Spa</h3>
+                            <span class="pool-price">From $120</span>
+                        </div>
+                        <p>Indulge in our premium spa treatments including massages, facials, and wellness therapies by expert therapists.</p>
+                        <div class="pool-features">
+                            <span class="feature">Therapeutic Massages</span>
+                            <span class="feature">Beauty Treatments</span>
+                            <span class="feature">Couples Packages</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
+
     <!-- Contact Page -->
     <main id="contact-page" style="display: none;">
         <section class="hero" id="contact">
+            <div class="hero-slideshow">
+                <div class="hero-slide active" style="background-image: url('https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')"></div>
+                <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')"></div>
+                <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1611892440504-42a792e24d32?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')"></div>
+            </div>
             <div class="hero-content fade-in">
                 <h1>Get In Touch</h1>
                 <p>We're here to assist with reservations, inquiries, and ensure your stay with us is nothing short of perfect.</p>
+                <a href="#contact-form" class="btn">Send a Message</a>
             </div>
         </section>
 
         <section class="section">
+            <h2 class="section-title">Contact Us</h2>
+            <p class="section-subtitle">Reach out to us for reservations, inquiries, or any assistance you may need</p>
+            
             <div class="contact-container stagger">
                 <div class="contact-info">
                     <h2>Contact Information</h2>
@@ -1143,7 +1310,7 @@
                     </div>
                 </div>
 
-                <div class="contact-form">
+                <div class="contact-form" id="contact-form">
                     <h2>Send Us a Message</h2>
                     <form>
                         <div class="form-group">
@@ -1175,7 +1342,7 @@
                         
                         <div class="form-group">
                             <label for="message">Your Message</label>
-                            <textarea id="message" name="message" required></textarea>
+                            <textarea id="message" name="message" rows="5" required></textarea>
                         </div>
                         
                         <button type="submit" class="btn-primary">Send Message</button>
@@ -1185,121 +1352,8 @@
         </section>
     </main>
 
-    <!-- Room Details Page -->
-    <main id="room-details-page" style="display: none;">
-        <div class="details-container">
-            <div class="details-hero fade-in">
-                <div class="details-header">
-                    <h1>Deluxe Room</h1>
-                    <span class="details-price">$199 / night</span>
-                </div>
-                <p style="font-size: 1.2rem; line-height: 1.7; color: #666;">Experience luxury in our spacious Deluxe Room, featuring premium amenities, stunning ocean views, and sophisticated design for the perfect retreat.</p>
-            </div>
-
-            <div class="details-gallery">
-                <div class="main-image">
-                    <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Deluxe Room Main View">
-                </div>
-                <div class="side-images">
-                    <div class="side-image">
-                        <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Deluxe Room Bathroom">
-                    </div>
-                    <div class="side-image">
-                        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Deluxe Room View">
-                    </div>
-                </div>
-            </div>
-
-            <div class="details-content stagger">
-                <div class="room-description">
-                    <h2 style="font-size: 2.2rem; margin-bottom: 1.5rem; color: #2c1810;">Room Description</h2>
-                    <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 2rem; color: #666;">
-                        Our Deluxe Room offers 35 square meters of luxurious living space designed for ultimate comfort and relaxation. 
-                        Featuring a king-size bed with premium linens, a private balcony with stunning ocean views, and sophisticated 
-                        contemporary design, this room provides the perfect sanctuary for your stay. The elegant bathroom includes 
-                        a rainfall shower and premium amenities for your complete comfort.
-                    </p>
-                    
-                    <h3 style="font-size: 1.8rem; margin-bottom: 1.5rem; color: #2c1810;">Room Amenities</h3>
-                    <div class="amenities-grid">
-                        <div class="amenity">
-                            <span>🛏️</span>
-                            <span>King-size bed with premium linens</span>
-                        </div>
-                        <div class="amenity">
-                            <span>🌅</span>
-                            <span>Private balcony with ocean view</span>
-                        </div>
-                        <div class="amenity">
-                            <span>📺</span>
-                            <span>55-inch Smart TV with streaming</span>
-                        </div>
-                        <div class="amenity">
-                            <span>📶</span>
-                            <span>High-speed WiFi (1 Gbps)</span>
-                        </div>
-                        <div class="amenity">
-                            <span>☕</span>
-                            <span>Nespresso coffee machine</span>
-                        </div>
-                        <div class="amenity">
-                            <span>🍾</span>
-                            <span>Complimentary minibar (restocked daily)</span>
-                        </div>
-                        <div class="amenity">
-                            <span>🔒</span>
-                            <span>Electronic safe</span>
-                        </div>
-                        <div class="amenity">
-                            <span>🌡️</span>
-                            <span>Individual climate control</span>
-                        </div>
-                    </div>
-
-                    <h3 style="font-size: 1.8rem; margin-bottom: 1.5rem; color: #2c1810; margin-top: 3rem;">Bathroom Features</h3>
-                    <p style="font-size: 1.1rem; line-height: 1.8; color: #666; margin-bottom: 2rem;">
-                        The luxurious bathroom features a spacious rainfall shower, premium toiletries from renowned brands, 
-                        plush bathrobes and slippers, hairdryer, and elegant marble finishes throughout.
-                    </p>
-                </div>
-
-                <div class="booking-form">
-                    <h3>Book This Room</h3>
-                    <form>
-                        <div class="form-group">
-                            <label>Check-in Date</label>
-                            <input type="date" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Check-out Date</label>
-                            <input type="date" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Guests</label>
-                            <select required>
-                                <option value="1">1 Guest</option>
-                                <option value="2" selected>2 Guests</option>
-                                <option value="3">3 Guests</option>
-                                <option value="4">4 Guests</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>Special Requests</label>
-                            <input type="text" placeholder="Any special requirements?">
-                        </div>
-                        <button type="submit" class="btn-primary">Book Now</button>
-                    </form>
-                    <div style="margin-top: 2rem; padding: 1.5rem; background: #fff; border-radius: 15px; text-align: center;">
-                        <div style="font-size: 0.9rem; color: #666; margin-bottom: 0.5rem;">Best Price Guarantee</div>
-                        <div style="font-weight: 600; color: #2c1810;">Free cancellation until 48 hours before check-in</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main>
-
     <!-- Footer -->
-    <footer id="contact">
+    <footer>
         <div class="footer-content">
             <div class="footer-logo">Oasis<span>Hotel</span></div>
             <p class="footer-tagline">Where luxury meets serenity in the heart of paradise. Experience the perfect blend of comfort, elegance, and exceptional service.</p>
@@ -1336,10 +1390,22 @@
             // Update active nav link
             document.querySelectorAll('nav a').forEach(link => {
                 link.classList.remove('active');
+                
+                // Set active class based on current page
+                if ((pageId === 'home-page' && link.getAttribute('href') === '#home') ||
+                    (pageId === 'rooms-page' && link.getAttribute('href') === '#rooms') ||
+                    (pageId === 'dining-page' && link.getAttribute('href') === '#dining') ||
+                    (pageId === 'pool-page' && link.getAttribute('href') === '#pool') ||
+                    (pageId === 'contact-page' && link.getAttribute('href') === '#contact')) {
+                    link.classList.add('active');
+                }
             });
             
             // Scroll to top when changing pages
             window.scrollTo(0, 0);
+            
+            // Restart slideshow for the current page
+            startSlideshow();
         }
 
         // Navigation click handlers
@@ -1352,23 +1418,16 @@
                 else if (target === 'rooms') showPage('rooms-page');
                 else if (target === 'dining') showPage('dining-page');
                 else if (target === 'pool') showPage('pool-page');
-                else if (target === 'contact') {
-                    showPage('home-page');
-                    setTimeout(() => {
-                        document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
-                    }, 100);
-                }
+                else if (target === 'contact') showPage('contact-page');
             });
         });
 
         // Service card click handlers
-        document.querySelectorAll('.service-card, .room-card').forEach(card => {
+        document.querySelectorAll('.service-card, .room-card, .dining-card, .pool-card').forEach(card => {
             card.addEventListener('click', (e) => {
                 e.preventDefault();
-                if (card.classList.contains('room-card')) {
-                    showPage('room-details-page');
-                }
-                // Add other service page routing as needed
+                // You can add specific page routing for each card type here
+                // For now, they just navigate to their respective pages
             });
         });
 
@@ -1389,10 +1448,37 @@
             });
         }, observerOptions);
 
-        // Observe all service and room cards
-        document.querySelectorAll('.service-card, .room-card').forEach(card => {
+        // Observe all cards
+        document.querySelectorAll('.service-card, .room-card, .dining-card, .pool-card').forEach(card => {
             observer.observe(card);
         });
+
+        // Hero Slideshow Functionality
+        function startSlideshow() {
+            const currentPage = document.querySelector('main[style="display: block;"]') || document.getElementById('home-page');
+            const slideshow = currentPage.querySelector('.hero-slideshow');
+            
+            if (!slideshow) return;
+            
+            const slides = slideshow.querySelectorAll('.hero-slide');
+            let currentSlide = 0;
+            
+            // Reset all slides
+            slides.forEach(slide => slide.classList.remove('active'));
+            
+            // Show first slide
+            slides[currentSlide].classList.add('active');
+            
+            // Change slide every 5 seconds
+            setInterval(() => {
+                slides[currentSlide].classList.remove('active');
+                currentSlide = (currentSlide + 1) % slides.length;
+                slides[currentSlide].classList.add('active');
+            }, 5000);
+        }
+
+        // Initialize slideshow
+        startSlideshow();
     </script>
 </body>
 </html>
